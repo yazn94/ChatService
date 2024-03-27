@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: ChatService
+  datasource:
+    url: jdbc:mysql://localhost:3306/autism_project_db?createDatabaseIfNotExist=true
+    username: root
+    password: 224yazan
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: autismcare24@gmail.com
+    password: plzwaopcuhdvjdji
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+server:
+  port: 8081
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: 224yazan
+    key-store-type: PKCS12
+    key-alias: spring

@@ -3,17 +3,13 @@ package com.chat.chatservice.service;
 import com.chat.chatservice.exceptions.EmailSendingException;
 import com.chat.chatservice.model.MessageDTO;
 import com.chat.chatservice.util.JwtTokenUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class NotificationHandler {
     private final EmailSender emailService;
-
-    @Autowired
-    public NotificationHandler(EmailSender emailService) {
-        this.emailService = emailService;
-    }
 
     public void composeMessageNotification(MessageDTO messageDTO) throws EmailSendingException {
         String receiverEmail = messageDTO.getReceiverEmail();
