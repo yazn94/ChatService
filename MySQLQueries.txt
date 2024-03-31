@@ -1,0 +1,61 @@
+create database autism_project_db;
+
+use autism_project_db;
+
+create table child_auth
+(
+    email    varchar(50) not null,
+    hashedPassword varchar(100) not null,
+    salt    varchar(100) not null,
+    primary key (email)
+);
+
+create table doctor_auth
+(
+    email    varchar(50) not null,
+    hashedPassword varchar(100) not null,
+    salt    varchar(100) not null,
+    primary key (email)
+);
+
+create table parent_auth
+(
+    email    varchar(50) not null,
+    hashedPassword varchar(100) not null,
+    salt    varchar(100) not null,
+    primary key (email)
+);
+
+
+create table doctor_profile
+(
+    email    varchar(50) not null,
+    username    varchar(50) not null,
+    registerDay    date not null,
+    primary key (email)
+);
+
+create table parent_profile
+(
+    email    varchar(50) not null,
+    username    varchar(50) not null,
+    registerDay    date not null,
+    primary key (email)
+);
+
+create table child_profile
+(
+    email varchar(50) not null,
+    username varchar(50) not null,
+    parentEmail varchar(50) not null,
+    doctorEmail varchar(50) not null,
+    age int not null,
+    progress json not null,
+    currentPoints int not null,
+    pointsSystemAvailability boolean not null,
+    registerDay    date not null,
+
+    primary key (email),
+    foreign key (parentEmail) references parent_profile(email) on delete cascade,
+    foreign key (doctorEmail) references doctor_profile(email) on delete cascade
+);
