@@ -31,7 +31,7 @@ create table doctor_profile
 (
     email    varchar(50) not null,
     username    varchar(50) not null,
-    registerDay    date not null,
+    registerDate    date not null,
     primary key (email)
 );
 
@@ -39,7 +39,7 @@ create table parent_profile
 (
     email    varchar(50) not null,
     username    varchar(50) not null,
-    registerDay    date not null,
+    registerDate    date not null,
     primary key (email)
 );
 
@@ -48,12 +48,12 @@ create table child_profile
     email varchar(50) not null,
     username varchar(50) not null,
     parentEmail varchar(50) not null,
-    doctorEmail varchar(50) not null,
-    age int not null,
+    doctorEmail varchar(50),
+    dataOfBirth date not null,
     progress json not null,
     currentPoints int not null,
     pointsSystemAvailability boolean not null,
-    registerDay    date not null,
+    registerDate   date not null,
 
     primary key (email),
     foreign key (parentEmail) references parent_profile(email) on delete cascade,
