@@ -46,10 +46,11 @@ create table parent_profile
 create table child_profile
 (
     email varchar(50) not null,
-    username varchar(50) not null,
+    firstName varchar(50) not null,
+    lastName varchar(50) not null,
     parentEmail varchar(50) not null,
     doctorEmail varchar(50),
-    dataOfBirth date not null,
+    dateOfBirth date not null,
     progress json not null,
     currentPoints int not null,
     pointsSystemAvailability boolean not null,
