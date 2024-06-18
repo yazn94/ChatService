@@ -1,4 +1,4 @@
-create database autism_project_db;
+create database autism_project_db if not exists;
 
 use autism_project_db;
 
@@ -51,12 +51,42 @@ create table child_profile
     parentEmail varchar(50) not null,
     doctorEmail varchar(50),
     dateOfBirth date not null,
-    progress json not null,
     currentPoints int not null,
     pointsSystemAvailability boolean not null,
     registerDate   date not null,
-
     primary key (email),
     foreign key (parentEmail) references parent_profile(email) on delete cascade,
     foreign key (doctorEmail) references doctor_profile(email) on delete cascade
+);
+
+create table drawingGameSummary
+(
+    game_id INT AUTO_INCREMENT,
+    email varchar(50) NOT NULL,
+    game_subject TEXT NOT NULL,
+    game_summary TEXT,
+    PRIMARY KEY (game_id)
+);
+create table parent_instruction
+(
+    instruction_id INT AUTO_INCREMENT,
+    email varchar(50) not null,
+    instruction TEXT NOT NULL,
+    PRIMARY KEY (instruction_id)
+);
+
+create table doctor_instruction
+(
+    instruction_id INT AUTO_INCREMENT,
+    email varchar(50) not null,
+    instruction TEXT NOT NULL,
+    PRIMARY KEY (instruction_id)
+);
+
+create table gaming_profile
+(
+    email varchar(50) NOT NULL,
+    totalGamesPlayed int NOT NULL,
+    generalFeedback TEXT NOT NULL,
+    primary key (email)
 );
